@@ -3,7 +3,7 @@ class ShairportSync < Formula
   homepage "https://github.com/mikebrady/shairport-sync"
   url "https://github.com/mikebrady/shairport-sync/archive/3.1.7.tar.gz"
   sha256 "2f5751c9be2236045f697c71c34abd1a6463457750c7df3d4a42568eeef6d98c"
-  head "https://github.com/mikebrady/shairport-sync.git", :branch => "development"
+  head "https://github.com/gregoryking/shairport-sync.git", :branch => "master"
 
   bottle do
     sha256 "d1ff0b035918b8a5343d41c8bb880dd192eb1d4b81b42042bdb4f23fcce1dc76" => :high_sierra
@@ -20,6 +20,7 @@ class ShairportSync < Formula
   depends_on "libao"
   depends_on "libdaemon"
   depends_on "libconfig"
+  depends_on "glib"
 
   def install
     system "autoreconf", "-fvi"
@@ -32,6 +33,8 @@ class ShairportSync < Formula
       --with-pipe
       --with-soxr
       --with-metadata
+      --with-configfiles
+      --with-dbus-interface
       --with-piddir=#{var}/run
       --sysconfdir=#{etc}/shairport-sync
       --prefix=#{prefix}
